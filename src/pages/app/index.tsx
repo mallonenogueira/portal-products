@@ -41,17 +41,19 @@ export default function Home() {
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (!session) {
+  if (session) {
     return {
-      redirect: {
-        permanent: false,
-        destination: "/",
+      props: {
+        session,
       },
-      props: {},
     };
   }
 
   return {
+    redirect: {
+      permanent: false,
+      destination: "/",
+    },
     props: {},
   };
 };

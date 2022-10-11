@@ -14,7 +14,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         permanent: false,
         destination: "/app",
       },
-      props: {},
+      props: {
+        session,
+      },
     };
   }
 
